@@ -1,6 +1,7 @@
 //This class contains a number of syntax and semantic errors.
 //Your job is to find them all.
 
+
 public class DebugMe {
 
 	public static void main(String[] args) {
@@ -17,19 +18,32 @@ public class DebugMe {
 	//  The sum of the first 3 numbers is 6.
 
 	public static void printSums(String[] args) {
-
-
-			int count;
-
-			count = Integer.parseInt(args[0]);
-
-			int sum = 0;
-			for (int i = 1; i <= count; i++) {
-
-				sum += i;
-				System.out.println("The sum of the first " + count + " numbers is " + sum + ".");
+		int number;
+		if (args.length == 0) {
+			System.out.println("No numbers specified");
+		} else {
+			boolean ifCaught;
+			for (int i = 0; i < args.length; i++) {
+				ifCaught = false;
+				try {
+					Integer.parseInt(args[i]);
+				} catch (NumberFormatException e) {
+					ifCaught = true;
+				} finally {
+					if (!ifCaught) {
+						number = Integer.parseInt(args[i]);
+						//print the numbers
+						int sum = 0;
+						for (int j = 1; j < number + 1; j++) {
+							sum += j;
+							System.out.println("The sum of the first " + j + " numbers is " + sum + ".");
+						}
+						break;
+					}
+				}
 			}
 		}
+	}
 
 
 		//This function demonstrates the use of the Box class

@@ -23,7 +23,11 @@ class Account
 	 */
 	public void deposit(int amount)
 	{
-		balance = balance + amount;
+		if (amount < 0) {
+			System.out.println("Tried to deposit negative amount, no deposit made");
+		} else {
+			balance = balance + amount;
+		}
 	}
 
 	/** Withdraws 'amount' from the account.
@@ -33,7 +37,11 @@ class Account
 	 */
 	public void withdraw(int amount)
 	{
-		balance = balance - amount;
+		if (amount <= balance) {
+			balance = balance - amount;
+		} else {
+			System.out.println("Tried to withdraw more than account balance. No withdraw made");
+		}
 	}
 
 	/* Returns the balance of the Account
