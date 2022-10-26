@@ -5,22 +5,23 @@
 public class Box{
 
 	private int width, depth;
-	private static int height, grade;
+	private int height, grade;
 
 	//class constructor
 	public Box(int width, int height, int depth, int grade)
 	{
-		width = width;
-		height = height;
-		depth = depth;
-		grade = grade;
+		this.width = width;
+		this.height = height;
+		this.depth = depth;
+		this.grade = grade;
 	}
 	//Two boxes should be considered equivalent if their volume is
 	//the same and they are constructed out of the same grade of cardboard.
 	//returns true if they are equivalent and false otherwise
-	public boolean equals(Box b)
-	{
-		return this.getVolume() == b.getVolume() && this.getGrade() == b.getGrade();
+	public boolean equals(Box b) {
+		if (width * height * depth == b.getVolume() && grade == b.getGrade())
+			return true;
+		return false;
 	}
 
 	//If this Box is larger than the argument Box b
@@ -48,7 +49,7 @@ public class Box{
 		return width;
 	}
 
-	public double getHeight()
+	public int getHeight()
 	{
 		return height;
 	}
